@@ -18,6 +18,18 @@ const getFriend = require('./friend/getFriend');
 const deleteFriend = require('./friend/deleteFriend');
 const searchFriend = require('./friend/searchFriend');
 
+// chat / msg
+const sendMsg = require('./chat/sendMsg');
+const getChatList = require('./chat/getChatList');
+const getChat = require('./chat/getChat');
+const deleteMsg = require('./chat/deleteMsg');
+const deleteChat = require('./chat/deleteChat');
+const pinChat = require('./chat/pinChat');
+
+// group
+
+// other
+
 const app = express();
 app.use(express.json());
 app.use(cors())
@@ -41,5 +53,17 @@ app.post('/resFriendRequest', resFriendRequest);
 app.get('/getFriend/:user_id', getFriend);
 app.post('/deleteFriend', deleteFriend);
 app.get('/searchFriend/:user_id/:friend_name', searchFriend);
+
+// chat / msg
+app.post('/sendMsg', sendMsg);
+app.get('/getChatList/:user_id', getChatList);
+app.get('/getChat/:user_id/:chat_id', getChat);
+app.post('/deleteMsg', deleteMsg);
+app.post('/deleteChat', deleteChat);
+app.post('/pinChat', pinChat);
+
+// group
+
+// other
 
 app.listen(4000);
