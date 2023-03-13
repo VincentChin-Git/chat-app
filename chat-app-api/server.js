@@ -27,8 +27,16 @@ const deleteChat = require('./chat/deleteChat');
 const pinChat = require('./chat/pinChat');
 
 // group
+const { newGroup, storeGroupImage } = require('./group/newGroup')
+const { editGroupImage, storeEditGroupImage } = require('./group/editGroupImage')
+const editGroupName = require('./group/editGroupName');
+const addMember = require('./group/addMember');
+const getGroupMember = require('./group/getGroupMember');
+const deleteMember = require('./group/deleteMember');
+const quitGroup = require('./group/quitGroup');
 
 // other
+const receiveNotification = require('./others/receiveNotification');
 
 const app = express();
 app.use(express.json());
@@ -63,7 +71,15 @@ app.post('/deleteChat', deleteChat);
 app.post('/pinChat', pinChat);
 
 // group
+app.post('/newGroup', storeGroupImage.single('group_image'), newGroup);
+app.post('/editGroupImage', storeEditGroupImage.single('group_image'), editGroupImage);
+app.post('/editGroupName', editGroupName);
+app.post('/addMember', addMember);
+app.get('/getGroupMember/:group_id', getGroupMember);
+app.post('/deleteMember', deleteMember)
+app.post('/quitGroup', quitGroup)
 
 // other
+app.get('/receiveNotification/:user_id', receiveNotification);
 
 app.listen(4000);

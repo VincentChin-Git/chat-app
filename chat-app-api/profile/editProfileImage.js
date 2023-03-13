@@ -16,15 +16,13 @@ const storage = multer.diskStorage({
 const storeProfileImage = multer({ storage })
 
 const uploadProfileImage = (req, res) => {
-    const { user_id, filename } = req.body;
+    const { user_id } = req.body;
+    const { filename } = req.file;
     if (user_id && filename) {
-        const commaIndex = filename.indexOf('.');
-        const extension = filename.substring(commaIndex);
-        let imageURL = Date.now() + '-' + user_id + extension;
         db('user').where({ user_id })
-            .update({ image: imageURL })
+            .update({ image: filename })
             .then(() => {
-                res.json({ status: 'success', imageURL })
+                res.json({ status: 'success', filename })
             }).catch((error) => {
                 console.error(error);
             });

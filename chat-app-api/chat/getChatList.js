@@ -2,7 +2,6 @@ const db = require('../config.js');
 
 async function getChatList(req, res) {
     const { user_id } = req.params;
-    // res.json(req.body);
     if (user_id) {
 
         const chat_list = await db.select('*')
