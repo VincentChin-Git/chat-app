@@ -1,9 +1,9 @@
 @import 'mixin';
 
-.register-form-wrapper {
+.signin-form-wrapper {
     @include form-wrapper;
 
-    .register-form {
+    .signin-form {
         @include form;
 
         .logo {
@@ -14,9 +14,8 @@
             @include submit-btn;
         }
 
-        .signin-link {
-            @include link-text;
+        .register-link {
+            @include link-text
         }
-
     }
 }

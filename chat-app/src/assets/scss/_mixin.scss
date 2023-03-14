@@ -1,0 +1,80 @@
+@mixin submit-btn {
+    padding: 0.5rem 2rem;
+    border-radius: 5px;
+    border: none;
+    background-color: #4c4cff;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background-color: #3c3ccf;
+    }
+}
+
+@mixin form-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+@mixin form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f2f2f2;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1rem;
+        width: 100%;
+
+        .label {
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .input {
+            padding: 0.5rem;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1.1rem;
+            width: 100%;
+        }
+    }
+}
+
+@mixin logo {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    font-weight: bold;
+    color: #4c4cff;
+    text-shadow: 2px 2px #d9d9d9;
+}
+
+@mixin link-text {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    
+    .link-text {
+        text-decoration: underline;
+        color: #4c4cff;
+        cursor: pointer;
+    }
+
+    &:hover .link-text {
+        color: #3c3cff;
+    }
+}

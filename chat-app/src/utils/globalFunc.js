@@ -40,8 +40,7 @@ export const alertObj = (obj) => {
 
 export async function axiosPost(url, req) {
     let res = await axios.post(serverPath + url, req);
-    alertObj(res.data);
-    // return res.data;
+    return res.data;
 }
 
 export async function axiosPostImage(url, req) {
