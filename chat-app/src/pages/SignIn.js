@@ -1,16 +1,27 @@
 import React, { useState } from 'react';
 import '../assets/scss/SignIn.scss';
-import { handleInputChange } from '../utils/globalFunc';
+import { axiosPost, handleInputChange, handleStateChange } from '../utils/globalFunc';
 
-const SignInPage = ({ gotoRegister }) => {
+const SignInPage = ({ gotoRegister, setStateApp }) => {
 
     const [state, setState] = useState({
         contact_no: "",
         password: "",
     })
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
+    async function handleSubmit(e) {
+        e.preventDefault();
+        let res = await axiosPost('loginProfile', state);
+        if (res.status === 'error') {
+            alert('Error');
+        }
+        else if (res.status === 'success') {
+            handleStateChange(setStateApp, {
+                ...res.data,
+                contact_no: state.contact_no,
+                route: 'home'
+            })
+        }
     };
 
     return (
@@ -23,7 +34,7 @@ const SignInPage = ({ gotoRegister }) => {
                         type="text"
                         id="contactNo"
                         value={state.contact_no}
-                        onChange={(e) => handleInputChange(setState, 'contact_no', e.target.value, 'text')}
+                        onChange={(e) => handleInputChange(setState, 'contact_no', e.target.value, 'pureNumber')}
                         className="input"
                         required
                     />

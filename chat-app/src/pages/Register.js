@@ -55,7 +55,7 @@ const RegisterPage = ({ gotoSignIn }) => {
                         type="password"
                         id="password"
                         value={state.password}
-                        onChange={(e) => handleInputChange(setState, 'password', e.target.value)}
+                        onChange={(e) => handleInputChange(setState, 'password', e.target.value, 'text')}
                         className="input"
                         required
                     />
