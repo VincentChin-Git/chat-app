@@ -1,0 +1,143 @@
+@import 'variables';
+
+.ChatList {
+    width: 25%;
+    background-color: $primary-color;
+    padding: 1rem;
+    overflow-y: auto;
+
+    // Add hover styles for selected chat item
+    .ChatListItem:hover {
+        background-color: darken($primary-color, 10%);
+        cursor: pointer;
+    }
+
+    // Add scrollable styles
+    &::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: $secondary-color;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: $primary-color;
+    }
+
+    .Header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+
+        .Title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: $text-color;
+        }
+
+        .ProfileImage {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-size: cover;
+            background-position: center;
+            margin-right: 12px;
+            font-size: 24px;
+            font-weight: 500;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .NewChatButton {
+            background-color: transparent;
+            border: none;
+            color: $text-color;
+            cursor: pointer;
+            transition: color 0.2s ease-in-out;
+
+            &:hover {
+                color: $secondary-color;
+            }
+        }
+    }
+
+    .Search {
+        display: flex;
+        align-items: center;
+        background-color: lighten($primary-color, 10%);
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        margin-bottom: 1rem;
+
+        input[type='text'] {
+            flex: 1;
+            background-color: transparent;
+            border: none;
+            color: $text-color;
+
+            &:focus {
+                outline: none;
+            }
+        }
+
+        .SearchIcon {
+            font-size: 1.5rem;
+            color: $text-color;
+        }
+    }
+
+    .ChatListItems {
+        display: flex;
+        flex-direction: column;
+
+        .ChatListItem {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            transition: background-color 0.2s ease-in-out;
+
+            &.selected {
+                background-color: darken($primary-color, 10%);
+            }
+
+            .Avatar {
+                width: 4rem;
+                height: 4rem;
+                border-radius: 50%;
+                margin-right: 1rem;
+                background-color: $secondary-color;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: $text-color;
+                font-weight: bold;
+                font-size: 1.5rem;
+            }
+
+            .ChatInfo {
+                flex: 1;
+
+                .Name {
+                    font-weight: bold;
+                    color: $text-color;
+                }
+
+                .LastMessage {
+                    color: $text-color;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                }
+            }
+
+            .Time {
+                font-size: 0.8rem;
+                color: $text-color;
+            }
+        }
+    }
+}

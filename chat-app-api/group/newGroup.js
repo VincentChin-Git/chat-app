@@ -17,10 +17,17 @@ const storeGroupImage = multer({ storage })
 
 async function newGroup(req, res) {
     const { user_id, group_name, member_list } = req.body;
-    const { filename } = req.file;
-    if (user_id && filename && group_name && member_list.length > 0) {
-        let group_id = await db('group').insert({ group_name, group_image: filename, admin_id: user_id })
-            .returning('group_id');
+    const filename = req.file === undefined ? '' : req.file.filename;
+    if (user_id && group_name && member_list.length > 0) {
+        let group_id;
+        if (filename) {
+            group_id = await db('group').insert({ group_name, group_image: filename, admin_id: user_id })
+                .returning('group_id');
+        }
+        else {
+            group_id = await db('group').insert({ group_name, admin_id: user_id })
+                .returning('group_id');
+        }
         group_id = group_id[0].group_id;
 
         let chat_id = await db('chat').insert({ group_id })

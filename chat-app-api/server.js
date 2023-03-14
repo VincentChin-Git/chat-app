@@ -37,6 +37,8 @@ const quitGroup = require('./group/quitGroup');
 
 // other
 const receiveNotification = require('./others/receiveNotification');
+const profileImage = require('./others/profileImage');
+const groupImage = require('./others/groupImage');
 
 const app = express();
 app.use(express.json());
@@ -81,5 +83,7 @@ app.post('/quitGroup', quitGroup)
 
 // other
 app.get('/receiveNotification/:user_id', receiveNotification);
+app.get('/profileImage/:url', profileImage);
+app.get('/groupImage/:url', groupImage);
 
 app.listen(4000);
