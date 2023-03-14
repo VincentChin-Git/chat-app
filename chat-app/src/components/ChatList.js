@@ -1,14 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import ChatListItem from './ChatListItem.js';
 import '../assets/scss/ChatList.scss';
-import { serverPath } from '../utils/globalConst.js';
+import ChangeProfileImage from './ChangeProfileImage.js';
 
-const ChatList = ({ name, profile_image, chats, selectedChatIndex, onChatSelected }) => {
+const ChatList = ({ name, user_id, chats, selectedChatIndex, onChatSelected }) => {
+
     return (
         <div className="ChatList">
             <div className="Header">
-                <div className="ProfileImage" style={{ backgroundImage: `url(${serverPath}ProfileImage/${profile_image})` }}></div>
+                <ChangeProfileImage user_id={user_id} />
                 <button className="NewChatButton">New Chat</button>
             </div>
             <div className="Search">
@@ -27,18 +27,6 @@ const ChatList = ({ name, profile_image, chats, selectedChatIndex, onChatSelecte
             </div>
         </div>
     );
-};
-
-ChatList.propTypes = {
-    chats: PropTypes.arrayOf(
-        PropTypes.shape({
-            name: PropTypes.string.isRequired,
-            msg: PropTypes.string.isRequired,
-            time: PropTypes.string.isRequired,
-        })
-    ).isRequired,
-    selectedChatIndex: PropTypes.number.isRequired,
-    onChatSelected: PropTypes.func.isRequired,
 };
 
 export default ChatList;

@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import ChatList from '../components/ChatList';
 import ChatRoom from '../components/ChatRoom';
 import '../assets/scss/HomePage.scss';
-import { alertObj, axiosGet } from '../utils/globalFunc';
+import { axiosGet } from '../utils/globalFunc';
 
-const HomePage = ({ user_id, name, contact_no, profile_image }) => {
+const HomePage = ({ user_id, name, contact_no }) => {
 
     const [state, setState] = useState({
         chats: [],
@@ -23,7 +23,13 @@ const HomePage = ({ user_id, name, contact_no, profile_image }) => {
 
     return (
         <div className="home-page">
-            <ChatList profile_image={profile_image} name={name} chats={state.chats} selectedChatIndex={0} onChatSelected={() => { }} />
+            <ChatList
+                user_id={user_id}
+                name={name}
+                chats={state.chats}
+                selectedChatIndex={0}
+                onChatSelected={() => { }}
+            />
             <ChatRoom />
         </div>
     );

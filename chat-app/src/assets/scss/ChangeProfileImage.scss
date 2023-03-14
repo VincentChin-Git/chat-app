@@ -1,0 +1,122 @@
+@import 'mixin';
+
+.ChangeProfileImage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .ProfileImage {
+        position: relative;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        overflow: hidden;
+        cursor: pointer;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .Modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+
+        .ModalContent {
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 500px;
+            max-width: 90%;
+
+            .ModalHeader {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 20px;
+
+                h2 {
+                    font-size: 1.5rem;
+                    font-weight: 500;
+                }
+
+                .CloseButton {
+                    background-color: transparent;
+                    border: none;
+                    font-size: 2rem;
+                    cursor: pointer;
+                    color: #ccc;
+                }
+            }
+
+            .ModalBody {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                .ImagePreview {
+
+                    margin-bottom: 1rem;
+
+                    img {
+                        width: 100%;
+                        max-width: 200px;
+                        height: auto;
+                        border-radius: 50%;
+                    }
+                }
+
+                .FileInputWrapper {
+                    margin-bottom: 20px;
+
+                    .FileInputLabel {
+                        font-size: 1.2rem;
+                        color: #888;
+                        cursor: pointer;
+                        padding: 10px 20px;
+                        border: 1px solid #ddd;
+                        border-radius: 5px;
+                        display: inline-block;
+                        transition: all 0.3s ease-in-out;
+
+                        &:hover {
+                            background-color: #eee;
+                        }
+                    }
+
+                    input[type="file"] {
+                        display: none;
+                    }
+                }
+
+                .SaveButton {
+                    @include submit-btn;
+                }
+
+                .ClearButton {
+                    @include submit-btn;
+                    background-color: #757575;
+
+                    &:hover {
+                        background-color: #535353;
+                    }
+                }
+            }
+        }
+    }
+
+}

@@ -2,6 +2,8 @@
 
 # dependencies
 /chat-app/node_modules
+/chat-app-api/node_modules
+/chat-app-api/public
 /.pnp
 .pnp.js
 

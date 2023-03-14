@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../assets/scss/Register.scss';
-import { alertObj, axiosPost, handleInputChange } from '../utils/globalFunc';
+import { axiosPost, handleInputChange } from '../utils/globalFunc';
 
 const RegisterPage = ({ gotoSignIn }) => {
     const [state, setState] = useState({
